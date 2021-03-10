@@ -6,8 +6,8 @@ import {
 
 let width, height;
 
-let row = 25;
-let col = 25;
+let row = 50;
+let col = 50;
 let grid = new Array(col);
 
 // cells visited or unvisited
@@ -55,6 +55,9 @@ function setup(p5) {
     start = grid[0][0];
     end = grid[col - 1][row - 1];
 
+    start.wall = false;
+    end.wall = false;
+
     openSet.push(start);
 
     console.log(grid);
@@ -65,27 +68,18 @@ function setup(p5) {
 function draw(p5) {
     p5.background(0);
 
+    let winner = 0;
+    let current = openSet[winner];
+
     if (openSet.length) {
-        let winner = 0;
+
         for (let i = 0; i < openSet.length; i++) {
             if (openSet[i].f < openSet[winner].f) {
                 winner = i;
             }
         }
 
-        let current = openSet[winner];
-
         if (current === end) {
-            //find the path
-            path = [];
-            let temp = current;
-            path.push(temp);
-
-            while (temp.previous) {
-                path.push(temp.previous);
-                temp = temp.previous;
-            }
-
             p5.noLoop();
             alert('Path Found!!');
         }
@@ -96,26 +90,33 @@ function draw(p5) {
         let neighbours = current.neighbours;
 
         neighbours.forEach(neighbour => {
-            if (!closedSet.includes(neighbour)) {
+            if (!closedSet.includes(neighbour) && !neighbour.wall) {
                 let tempG = current.g + 1;
+
+                let newPath = false;
 
                 if (openSet.includes(neighbour)) {
                     if (tempG < neighbour.g) {
                         neighbour.g = tempG;
+                        newPath = true;
                     }
                 } else {
                     neighbour.g = tempG;
+                    newPath = true;
                     openSet.push(neighbour);
                 }
 
-                neighbour.h = heuristic(neighbour, end, p5);
-                neighbour.f = neighbour.g + neighbour.h;
-                neighbour.previous = current;
+                if (newPath) {
+                    neighbour.h = heuristic(neighbour, end, p5);
+                    neighbour.f = neighbour.g + neighbour.h;
+                    neighbour.previous = current;
+                }
             }
         });
 
     } else {
-
+        alert('No path to end destination');
+        p5.noLoop();
     }
 
     for (let i = 0; i < col; i++) {
@@ -134,8 +135,18 @@ function draw(p5) {
         openSet[i].show(p5, width, height, p5.color(0, 255, 0));
     }
 
+    //find the path
+    path = [];
+    let temp = current;
+    path.push(temp);
+
+    while (temp?.previous) {
+        path.push(temp.previous);
+        temp = temp.previous;
+    }
+
     for (let i = 0; i < path.length; i++) {
-        path[i].show(p5, width, height, p5.color(0, 0, 255));
+        path[i]?.show(p5, width, height, p5.color(0, 0, 255));
     }
 }
 

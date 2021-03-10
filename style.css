@@ -1,0 +1,18 @@
+main {
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 20px;
+  position: fixed;
+}
+
+p {
+  text-align: center;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  color: white;
+}
+
+body{
+  padding: 15px;
+  background-color: rgb(68, 67, 67);
+}

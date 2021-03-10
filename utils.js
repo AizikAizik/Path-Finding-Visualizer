@@ -7,7 +7,12 @@ export function removeFromArray(array, element){
 }
 
 export function heuristic(pointA, pointB, p5){
-    const dist = p5.abs(pointA.i - pointB.i) + p5.abs(pointA.j - pointB.j)
+    const dist = p5.dist(
+        pointA.i,
+        pointB.j,
+        pointB.i,
+        pointB.j
+    )
 
     return dist;
 }
