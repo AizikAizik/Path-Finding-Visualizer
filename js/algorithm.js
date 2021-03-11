@@ -150,5 +150,11 @@ function draw(p5) {
     }
 }
 
+
+// load particles
+particlesJS.load('particles-js', 'particles.json', function() {
+    console.log('callback - particles.js config loaded');
+});
+
 // window.setup = setup;
 // window.draw = draw;
