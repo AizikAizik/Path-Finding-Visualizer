@@ -4,6 +4,8 @@ import {
     heuristic
 } from './utils.js';
 
+import { Timer } from './timer.js';
+
 let width, height;
 
 let row = 50;
@@ -58,6 +60,8 @@ function setup(p5) {
     start.wall = false;
     end.wall = false;
 
+    Timer.start(1000, "timer")
+
     openSet.push(start);
 
     console.log(grid);
@@ -80,8 +84,11 @@ function draw(p5) {
         }
 
         if (current === end) {
+            let timerVal = document.getElementById("timer").innerText;
             p5.noLoop();
-            alert('Path Found!!');
+            alert(`Path Found in ${timerVal} seconds`);
+            Timer.setSpeed(0);
+            document.getElementById("timer").innerText = `0`;
         }
 
         removeFromArray(openSet, current);
@@ -116,6 +123,7 @@ function draw(p5) {
 
     } else {
         alert('No path to end destination');
+        Timer.setSpeed(0);
         p5.noLoop();
     }
 

@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>A* path finding Algorithm visualizer 👀😎</title>
+    <link rel="stylesheet" href="https://unpkg.com/tachyons@4.12.0/css/tachyons.min.css"/>
     <link rel="shortcut icon" href="./assets/astar.PNG" type="image/x-icon">
     <link rel="stylesheet" href="./styles/style.css">
 </head>
@@ -12,9 +13,40 @@
     <div id="particles-js"></div>
 
     <p>A* Path finding algorithms Visualizer that finds shortest path from Beginning of a Node to the End in a Grid system</p>
+
+    <div id="time" class="f2 white mt5">
+        <span id="timer"></span> second(s)
+    </div>
+
+    <footer class="pv4 ph3 ph5-m ph6-l mid-gray" id="footer">
+        <small class="white f6 db tc">
+            <b>Aizik projects Inc ©</b>,
+            <span class="date"></span>
+            All Rights Reserved
+        </small>
+        <div class="tc mt3">
+            <a href="https://github.com/AizikAizik" target="_blank" rel="noopener noreferrer" class="f5 dib ph2 link white underline-hover hover-blue" title="my Github account">
+                GitHub
+            </a>
+
+            <a href="https://www.linkedin.com/in/aizik-ogunleye-78749213a" target="_blank" rel="noopener noreferrer" class="f5 dib ph2 link white underline-hover hover-blue" title="my LinkedIn account">
+                LinkedIn
+            </a>
+
+            <a href="https://en.wikipedia.org/wiki/A*_search_algorithm" target="_blank" rel="noopener noreferrer" class="f5 dib ph2 link white underline-hover hover-blue" title="wikipedia on a* algorithm">
+                A* Algorithm
+            </a>
+
+            <a id="alert-href" href="" rel="noopener noreferrer" class="f5 dib ph2 link white underline-hover hover-blue" title="my email address">
+                Email
+            </a>
+        </div>
+    </footer>
     
+    <script src="./js/innnerHTML.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/p5@1.2.0/lib/p5.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
     <script type="module" src="./js/algorithm.js"></script>
+    <script type="module" src="./js/timer.js"></script>
 </body>
 </html>

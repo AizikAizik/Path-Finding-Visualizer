@@ -1,3 +1,9 @@
+body{
+  position: relative;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
 main {
   top: 50%;
   left: 50%;
@@ -8,21 +14,36 @@ main {
 
 p {
   text-align: center;
-  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
   color: white;
 }
 
-body{
+body {
   padding: 15px;
   background-color: rgb(68, 67, 67);
 }
 
-#particles-js 
-{
-    width: 100%;
-    height: 100%;
-    position: fixed;
-    z-index: -10;
-    top: 0;
-    left: 0
+#particles-js {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  z-index: -10;
+  top: 0;
+  left: 0;
+}
+
+#footer {
+  position: absolute;
+  bottom: 6%;
+  width: 100%;
+  height: 2.5rem;            /* Footer height */
+}
+
+#time{
+  text-align: center;
+}
+
+#timer{
+  padding: 7px;
 }
